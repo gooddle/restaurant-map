@@ -27,9 +27,10 @@ class SecurityConfig(
             .formLogin { it.disable() }
             .authorizeHttpRequests {
                 it.requestMatchers(
-                    "/api/v1/users/login",
-                    "/users/signup",
+                    "/api/users/signIn",
+                    "/api/users/signup",
                     "/swagger-ui/**",
+                    "/v3/api-docs/**",
                 ).permitAll()
                     .anyRequest().authenticated()
             }

@@ -1,6 +1,6 @@
 package org.example.restaurant.domain.user.dto
 
-data class SignUpRequest(
+data class SignInRequest(
     val email: String,
     val password: String
 )
