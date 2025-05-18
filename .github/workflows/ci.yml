@@ -29,8 +29,8 @@ jobs:
             AUTH_JWT_ACCESSTOKENEXPIRATIONHOUR: ${{ secrets.AUTH_JWT_ACCESSTOKENEXPIRATIONHOUR }}
             AUTH_JWT_ISSUER: ${{ secrets.AUTH_JWT_ISSUER }}
             AUTH_JWT_SECRET: ${{ secrets.AUTH_JWT_SECRET }}
-            REDIS_HOST: ${{ secrets.REDIS_HOST }}
-            REDIS_PORT: ${{ secrets.REDIS_PORT }}
+            DATA_REDIS_HOST: ${{ secrets.DATA_REDIS_HOST }}
+            DATA_REDIS_PORT: ${{ secrets.DATA_REDIS_PORT }}
             KAKAO_REST_API_KEY: ${{ secrets.KAKAO_REST_API_KEY }}
         run: |
           ./gradlew clean test
