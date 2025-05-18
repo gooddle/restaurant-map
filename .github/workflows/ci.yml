@@ -5,7 +5,7 @@ on:
     branches: [ dev, feature/* ]
   pull_request:
     branches:
-      - develop
+      - dev
 
 jobs:
   build:
@@ -26,9 +26,12 @@ jobs:
 
       - name: Run unit tests
         env:
-          AUTH_JWT_ACCESSTOKENEXPIRATIONHOUR: ${{ secrets.AUTH_JWT_ACCESSTOKENEXPIRATIONHOUR }}
-          AUTH_JWT_ISSUER: ${{ secrets.AUTH_JWT_ISSUER }}
-          AUTH_JWT_SECRET: ${{ secrets.AUTH_JWT_SECRET }}
+            AUTH_JWT_ACCESSTOKENEXPIRATIONHOUR: ${{ secrets.AUTH_JWT_ACCESSTOKENEXPIRATIONHOUR }}
+            AUTH_JWT_ISSUER: ${{ secrets.AUTH_JWT_ISSUER }}
+            AUTH_JWT_SECRET: ${{ secrets.AUTH_JWT_SECRET }}
+            DATA_REDIS_HOST: ${{ secrets.DATA_REDIS_HOST }}
+            DATA_REDIS_PORT: ${{ secrets.DATA_REDIS_PORT }}
+            KAKAO_REST_API_KEY: ${{ secrets.KAKAO_REST_API_KEY }}
         run: |
           ./gradlew clean test
 

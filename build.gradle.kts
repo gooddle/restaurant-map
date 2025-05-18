@@ -32,6 +32,10 @@ dependencies {
 
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
+    runtimeOnly("io.jsonwebtoken:jjwt-impl:0.12.3")
+    runtimeOnly("io.jsonwebtoken:jjwt-jackson:0.12.3")
+    implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.15.2")
+
 
     // ✅ 변경: annotationProcessor → kapt
     kapt("org.springframework.boot:spring-boot-configuration-processor")
@@ -50,6 +54,9 @@ dependencies {
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+    //redis
+    implementation("org.springframework.boot:spring-boot-starter-data-redis")
+
 }
 
 allOpen {
