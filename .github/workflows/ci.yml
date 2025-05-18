@@ -1,0 +1,36 @@
+name: Build Test
+
+on:
+  push:
+    branches: [ dev, feature/* ]
+  pull_request:
+    branches:
+      - develop
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up JDK
+        uses: actions/setup-java@v2
+        with:
+          distribution: 'adopt'
+          java-version: '17'
+
+      - name: Make Gradle Wrapper executable
+        run: chmod +x ./gradlew
+
+      - name: Run unit tests
+        env:
+          AUTH_JWT_ACCESSTOKENEXPIRATIONHOUR: ${{ secrets.AUTH_JWT_ACCESSTOKENEXPIRATIONHOUR }}
+          AUTH_JWT_ISSUER: ${{ secrets.AUTH_JWT_ISSUER }}
+          AUTH_JWT_SECRET: ${{ secrets.AUTH_JWT_SECRET }}
+        run: |
+          ./gradlew clean test
+
+      - name: Build project with Gradle
+        run: ./gradlew build
