@@ -14,10 +14,8 @@ class KakaoService(
     fun get(
         keyword: String,
         userId: Long
-    ): List<KakaoKeywordSearchResponse.Document> {
-        val user = userRepository.findById(userId)
-            ?: throw IllegalArgumentException("User with id $userId not found")
-        val kakaoMap = kakaoMapUtil.searchPlaceByKeyword(keyword)
-        return kakaoMap?.documents ?: emptyList()
+    ): KakaoKeywordSearchResponse? {
+        val user = userRepository.findById(userId) ?: throw IllegalArgumentException("User with id $userId not found")
+        return kakaoMapUtil.searchPlaceByKeyword(keyword)
     }
 }

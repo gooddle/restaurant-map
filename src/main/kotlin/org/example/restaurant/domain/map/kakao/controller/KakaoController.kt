@@ -22,7 +22,7 @@ class KakaoController(
     fun get(
         @RequestParam keyword: String,
         @AuthenticationPrincipal userPrincipal: UserPrincipal
-    ): ResponseEntity<List<KakaoKeywordSearchResponse.Document>> {
+    ): ResponseEntity<KakaoKeywordSearchResponse> {
        return ResponseEntity.status(HttpStatus.OK).body(kakaoService.get(keyword, userPrincipal.id))
     }
 }
